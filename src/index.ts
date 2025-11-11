@@ -3,6 +3,8 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import userRoutes from "./Routes/userRoutes";
+import recruiterRoutes from "./Routes/RecruiterRoutes";
+import jobRoutes from "./Routes/JobsRoutes";
 
 dotenv.config();
 const app = express();
@@ -11,6 +13,8 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/users", userRoutes);
+app.use("/recruiters", recruiterRoutes);
+app.use("/jobs", jobRoutes);
 
 const PORT = process.env.PORT || 4000;
 const MONGO_URI = process.env.MONGO_URI || "";

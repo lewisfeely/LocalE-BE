@@ -32,7 +32,7 @@ export const postUser = async (req: Request, res: Response) => {
     });
     await newUser.save();
 
-    res.status(201).json({
+    res.status(200).json({
       message: "User created successfully",
       user: newUser._id,
     });
@@ -43,9 +43,9 @@ export const postUser = async (req: Request, res: Response) => {
 
 export const deleteUser = async (req: Request, res: Response) => {
   try {
-    User.deleteOne();
-
-    res.status(201).json({});
+    const id = req.body;
+    User.findByIdAndDelete(id);
+    res.status(200).json({ message: `deleted client '${id}'` });
   } catch (err) {
     return res.status(500).json({ message: "Failed to post user", error: err });
   }

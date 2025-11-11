@@ -14,7 +14,7 @@ const userSchema = new Schema<IUser>(
     refreshToken: { type: String, required: true },
     accessToken: { type: String, required: true },
   },
-  { timestamps: true }
+  { timestamps: false }
 );
 
 export const User = mongoose.model<IUser>("User", userSchema, "Users");
