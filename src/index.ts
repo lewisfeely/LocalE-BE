@@ -2,9 +2,10 @@ import mongoose from "mongoose";
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import userRoutes from "./Routes/userRoutes";
+import profileRoutes from "./Routes/ProfileRoutes";
 import recruiterRoutes from "./Routes/RecruiterRoutes";
 import jobRoutes from "./Routes/JobsRoutes";
+import authRoutes from "./Routes/AuthRoutes";
 
 dotenv.config();
 const app = express();
@@ -12,9 +13,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/users", userRoutes);
+app.use("/profile", profileRoutes);
 app.use("/recruiters", recruiterRoutes);
 app.use("/jobs", jobRoutes);
+app.use("/auth", authRoutes);
 
 const PORT = process.env.PORT || 4000;
 const MONGO_URI = process.env.MONGO_URI || "";
