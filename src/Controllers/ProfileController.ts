@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { Profile } from "../Models/ProfileModel";
 import { error } from "console";
 
-export const fetchUser = async (req: Request, res: Response) => {
+export const fetchProfile = async (req: Request, res: Response) => {
   try {
     const firebaseUser = (req as any).user;
     const user = await Profile.findOne({ userId: firebaseUser.uid });
@@ -50,6 +50,19 @@ export const postUser = async (req: Request, res: Response) => {
       message: "User created successfully",
       user: newUser._id,
     });
+  } catch (err) {
+    return res.status(500).json({ message: "Failed to post user", error: err });
+  }
+};
+
+export const editProfile = async (req: Request, res: Response) => {
+  try {
+    const updates = req.body;
+    const userId = req.params;
+
+    const profile = Profile.updateOne({ userId: userId }, updates);
+
+    res.status(200).json({ message: "successfully edited" });
   } catch (err) {
     return res.status(500).json({ message: "Failed to post user", error: err });
   }
