@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
-import { Profile } from "../Models/ProfileModel";
+import { Profile } from "../Models/UserModel";
 import { error } from "console";
+import { ProfileDetails } from "../Models/ProfileDetailsModel";
 
 export const fetchProfile = async (req: Request, res: Response) => {
   try {
@@ -22,7 +23,6 @@ export const postUser = async (req: Request, res: Response) => {
     const {
       role,
       accountCreated,
-      rating,
       profilePicture,
       age,
       skills,
@@ -30,12 +30,12 @@ export const postUser = async (req: Request, res: Response) => {
       email,
       number,
       userId,
+      companyId,
     } = req.body;
 
     const newUser = new Profile({
       role,
       accountCreated,
-      rating,
       profilePicture,
       age,
       skills,
@@ -44,6 +44,20 @@ export const postUser = async (req: Request, res: Response) => {
       number,
       userId,
     });
+
+    const newProfile = new ProfileDetails({
+      role,
+      accountCreated,
+      profilePicture,
+      age,
+      skills,
+      companyName,
+      email,
+      number,
+      userId,
+      companyId,
+    });
+    await newProfile.save();
     await newUser.save();
 
     res.status(200).json({

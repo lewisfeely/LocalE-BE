@@ -8,6 +8,7 @@ export interface IApplication extends Document {
   toolsSupplied: string;
   workersSent: string;
   Quote: number;
+  rejected: boolean;
 }
 
 const applicationSchema = new Schema<IApplication>(
@@ -18,6 +19,7 @@ const applicationSchema = new Schema<IApplication>(
     toolsSupplied: { type: String, default: "" },
     workersSent: { type: String, default: "" },
     Quote: { type: Number, default: 0 },
+    rejected: { type: Boolean, default: false },
   },
   {
     timestamps: false,

@@ -1,6 +1,6 @@
 import mongoose, { Document, Schema, Types } from "mongoose";
 
-export interface IProfile extends Document {
+export interface IUser extends Document {
   _id: Types.ObjectId;
   role: "worker" | "recruiter" | string;
   accountCreated: string;
@@ -14,7 +14,7 @@ export interface IProfile extends Document {
   userId: string;
 }
 
-const profileSchema = new Schema<IProfile>(
+const profileSchema = new Schema<IUser>(
   {
     role: { type: String, default: "worker" },
     accountCreated: { type: String, default: "" },
@@ -30,4 +30,4 @@ const profileSchema = new Schema<IProfile>(
   { timestamps: false }
 );
 
-export const Profile = mongoose.model<IProfile>("User", profileSchema, "Users");
+export const Profile = mongoose.model<IUser>("User", profileSchema, "Users");

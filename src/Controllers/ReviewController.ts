@@ -1,4 +1,3 @@
-import { Recruiter } from "../Models/RecruiterModel";
 import { Request, Response } from "express";
 import { Review } from "../Models/ReviewModel";
 import mongoose from "mongoose";
@@ -73,7 +72,7 @@ export const deleteReviewByReviewId = async (_req: Request, res: Response) => {
   try {
     const { reviewId } = _req.params;
 
-    Review.deleteOne({ reviewId: reviewId });
+    await Review.deleteOne({ reviewId: reviewId });
 
     return res.status(201).json({
       message: "Review deleted successfully",

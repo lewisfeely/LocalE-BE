@@ -3,7 +3,7 @@ import {
   editProfile,
   fetchProfile,
   postUser,
-} from "../Controllers/ProfileController";
+} from "../Controllers/UserController";
 
 import { verifyFirebaseToken } from "../ZMiddleware/authMiddleware";
 

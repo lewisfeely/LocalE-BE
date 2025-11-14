@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Request, Response } from "express";
 import { error } from "console";
-import { Profile } from "../Models/ProfileModel";
+import { Profile } from "../Models/UserModel";
 
 export const loginUser = async (req: Request, res: Response) => {
   try {
