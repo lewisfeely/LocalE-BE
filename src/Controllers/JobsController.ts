@@ -4,7 +4,7 @@ import { Job } from "../Models/JobsModel";
 
 export const fetchJobs = async (_req: Request, res: Response) => {
   try {
-    const items = await Job.find().sort();
+    const items = await Job.find({ workerId: "" });
     return res.json(items);
   } catch (err) {
     return res.status(500).json({ message: "Server error", error: err });
@@ -14,7 +14,6 @@ export const fetchJobs = async (_req: Request, res: Response) => {
 export const fetchJobsById = async (_req: Request, res: Response) => {
   try {
     const { id } = _req.params;
-    console.log(id);
     const job = await Job.findOne({ _id: id });
 
     if (!job) {

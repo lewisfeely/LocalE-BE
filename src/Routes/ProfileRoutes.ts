@@ -5,7 +5,7 @@ import {
   postUser,
 } from "../Controllers/ProfileController";
 
-import { verifyFirebaseToken } from "../Middleware/authMiddleware";
+import { verifyFirebaseToken } from "../ZMiddleware/authMiddleware";
 
 const router = Router();
 

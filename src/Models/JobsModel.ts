@@ -16,6 +16,7 @@ export interface IJob extends Document {
   description: string;
   completed: boolean;
   recruiterName: string;
+  workerId: string;
 }
 
 const jobSchema = new Schema<IJob>(
@@ -34,6 +35,7 @@ const jobSchema = new Schema<IJob>(
     description: { type: String, default: "" },
     completed: { type: Boolean, default: false },
     recruiterName: { type: String, default: "" },
+    workerId: { type: String, default: "" },
   },
   { timestamps: false }
 );

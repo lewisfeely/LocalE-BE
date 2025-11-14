@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import admin from "../Config/Firebase";
+import admin from "../ZConfig/Firebase";
 
 export async function verifyFirebaseToken(
   req: Request,

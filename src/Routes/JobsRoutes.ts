@@ -6,17 +6,18 @@ import {
   createJob,
   deleteById,
 } from "../Controllers/JobsController";
+import { verifyFirebaseToken } from "../ZMiddleware/authMiddleware";
 
 const router = Router();
 
-router.get("/jobs", fetchJobs);
+router.get("/jobs", verifyFirebaseToken, fetchJobs);
 
-router.get("/job/:id", fetchJobsById);
+router.get("/job/:id", verifyFirebaseToken, fetchJobsById);
 
-router.post("/job/:id", editJobbyId);
+router.post("/job/:id", verifyFirebaseToken, editJobbyId);
 
-router.post("/newjob", createJob);
+router.post("/newjob", verifyFirebaseToken, createJob);
 
-router.delete("/deletejob/:id", deleteById);
+router.delete("/deletejob/:id", verifyFirebaseToken, deleteById);
 
 export default router;

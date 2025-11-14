@@ -24,4 +24,4 @@ const ReviewSchema = new Schema<IReview>({
   reviewId: { type: String, default: "" },
 });
 
-export const Review = model<IReview>("Review", ReviewSchema);
+export const Review = model<IReview>("Review", ReviewSchema, "Reviews");

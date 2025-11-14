@@ -6,6 +6,8 @@ import profileRoutes from "./Routes/ProfileRoutes";
 import recruiterRoutes from "./Routes/RecruiterRoutes";
 import jobRoutes from "./Routes/JobsRoutes";
 import authRoutes from "./Routes/AuthRoutes";
+import reviewRoutes from "./Routes/ReviewRoutes";
+import applicationRoutes from "./Routes/ApplicationRoutes";
 
 dotenv.config();
 const app = express();
@@ -17,6 +19,8 @@ app.use("/profile", profileRoutes);
 app.use("/recruiters", recruiterRoutes);
 app.use("/jobs", jobRoutes);
 app.use("/auth", authRoutes);
+app.use("/review", reviewRoutes);
+app.use("/application", applicationRoutes);
 
 const PORT = process.env.PORT || 4000;
 const MONGO_URI = process.env.MONGO_URI || "";
